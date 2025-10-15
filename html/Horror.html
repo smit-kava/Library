@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horror Books - Online BookStore</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="../Image/Logo/Books_Logo.png">
+</head>
+<body class="bg-dark text-white">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold text-primary" href="../index.html">📚 Online BookStore</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#">Horror</a></li>
+      </ul>
+      <div class="d-flex align-items-center me-3">
+        <a href="Cart.html" class="btn btn-warning">
+          Cart: <span id="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Header -->
+<div class="container py-4">
+  <h2 class="mb-4 text-primary">Horror Books</h2>
+
+  <table class="table table-dark table-hover align-middle">
+    <thead class="table-secondary text-dark">
+      <tr>
+        <th>Sr No</th>
+        <th>Book Title</th>
+        <th>Author</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>The Shining</td>
+        <td>Stephen King</td>
+        <td>A haunted hotel isolates a family, leading to terrifying events.</td>
+        <td class="text-success fw-bold">₹399</td>
+        <td>
+          <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#bookModal"
+                  data-title="The Shining" data-author="Stephen King"
+                  data-desc="A haunted hotel isolates a family, leading to terrifying events."
+                  data-price="399"
+                  data-img="../Image/Horror/shining.jpg">
+            View More
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>It</td>
+        <td>Stephen King</td>
+        <td>A group of kids face an ancient evil clown haunting their town.</td>
+        <td class="text-success fw-bold">₹499</td>
+        <td>
+          <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#bookModal"
+                  data-title="It" data-author="Stephen King"
+                  data-desc="A group of kids face an ancient evil clown haunting their town."
+                  data-price="499"
+                  data-img="../Image/Horror/it.jpg">
+            View More
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>3</td>
+        <td>Dracula</td>
+        <td>Bram Stoker</td>
+        <td>The legendary vampire Count Dracula comes to England to spread terror and seduction.</td>
+        <td class="text-success fw-bold">₹350</td>
+        <td>
+          <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#bookModal"
+                  data-title="Dracula" data-author="Bram Stoker"
+                  data-desc="The legendary vampire Count Dracula comes to England to spread terror and seduction."
+                  data-price="350"
+                  data-img="../Image/Horror/dracula.jpg">
+            View More
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>4</td>
+        <td>Frankenstein</td>
+        <td>Mary Shelley</td>
+        <td>A scientist creates a monster, leading to horror, revenge, and tragedy.</td>
+        <td class="text-success fw-bold">₹300</td>
+        <td>
+          <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#bookModal"
+                  data-title="Frankenstein" data-author="Mary Shelley"
+                  data-desc="A scientist creates a monster, leading to horror, revenge, and tragedy."
+                  data-price="300"
+                  data-img="../Image/Horror/frankenstein.jpg">
+            View More
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>5</td>
+        <td>Pet Sematary</td>
+        <td>Stephen King</td>
+        <td>A family discovers a burial ground that brings the dead back, with terrifying consequences.</td>
+        <td class="text-success fw-bold">₹420</td>
+        <td>
+          <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#bookModal"
+                  data-title="Pet Sematary" data-author="Stephen King"
+                  data-desc="A family discovers a burial ground that brings the dead back, with terrifying consequences."
+                  data-price="420"
+                  data-img="../Image/Horror/petsematary.jpg">
+            View More
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bookModalLabel">Book Details</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <img id="modalImage" src="" alt="Book Image" class="img-fluid mb-3">
+        <h5 id="modalTitle"></h5>
+        <p><b>Author:</b> <span id="modalAuthor"></span></p>
+        <p id="modalDesc"></p>
+        <p><b>Price: ₹<span id="modalPrice"></span></b></p>
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-primary" id="addToCartBtn">Add to Cart</button>
+          <button class="btn btn-success" id="buyNowBtn">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index:9999;">
+  <div id="cartToast" class="toast bg-success text-white align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="toast-message">✅ Book added to cart!</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cartCountElement = document.getElementById("cart-count");
+  const toastMessage = document.getElementById("toast-message");
+  const cartToastElement = document.getElementById("cartToast");
+  const cartToast = new bootstrap.Toast(cartToastElement);
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cartCountElement.textContent = cart.length;
+
+  const bookModal = document.getElementById("bookModal");
+  bookModal.addEventListener("show.bs.modal", (e) => {
+    const button = e.relatedTarget;
+    document.getElementById("modalTitle").textContent = button.dataset.title;
+    document.getElementById("modalAuthor").textContent = button.dataset.author;
+    document.getElementById("modalDesc").textContent = button.dataset.desc;
+    document.getElementById("modalPrice").textContent = button.dataset.price;
+    document.getElementById("modalImage").src = button.dataset.img;
+
+    // Add to Cart inside Modal
+    const addBtn = document.getElementById("addToCartBtn");
+    addBtn.onclick = () => {
+      cart.push({ title: button.dataset.title, price: parseInt(button.dataset.price) });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      cartCountElement.textContent = cart.length;
+      toastMessage.textContent = `✅ "${button.dataset.title}" added to cart!`;
+      cartToast.show();
+    };
+
+    // Buy Now inside Modal
+    const buyBtn = document.getElementById("buyNowBtn");
+    buyBtn.onclick = () => {
+      alert(`Redirecting to buy "${button.dataset.title}" for ₹${button.dataset.price}`);
+    };
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Children Books - BookStore</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-dark text-white">
+
+<div class="container py-4">
+  <!-- Header with Cart Count -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary">Children Books</h2>
+     <div class="d-flex align-items-center me-3">
+        <a href="Cart.html" class="btn btn-warning">
+          Cart: <span id="cart-count">0</span>
+        </a>
+      </div>
+  </div>
+
+  <table class="table table-dark table-bordered table-hover align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>Sr No</th>
+        <th>Book Title</th>
+        <th>Author</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Book Row 1 -->
+      <tr>
+        <td>1</td>
+        <td><a class="text-info">Harry Potter and the Sorcerer's Stone</a></td>
+        <td>J.K. Rowling</td>
+        <td>A young wizard discovers his magical heritage and attends Hogwarts School.</td>
+        <td class="text-success fw-bold">₹350</td>
+        <td>
+          <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#bookModal"
+                  data-title="Harry Potter and the Sorcerer's Stone" data-author="J.K. Rowling" data-price="350"
+                  data-desc="A young wizard discovers his magical heritage and attends Hogwarts School."
+                  data-img="https://via.placeholder.com/150">
+            View More
+          </button>
+        </td>
+      </tr>
+
+      <!-- Book Row 2 -->
+      <tr>
+        <td>2</td>
+        <td><a class="text-info">The Very Hungry Caterpillar</a></td>
+        <td>Eric Carle</td>
+        <td>A caterpillar eats its way through the week and transforms into a butterfly.</td>
+        <td class="text-success fw-bold">₹200</td>
+        <td>
+          <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#bookModal"
+                  data-title="The Very Hungry Caterpillar" data-author="Eric Carle" data-price="200"
+                  data-desc="A caterpillar eats its way through the week and transforms into a butterfly."
+                  data-img="https://via.placeholder.com/150">
+            View More
+          </button>
+        </td>
+      </tr>
+
+      <!-- Book Row 3 -->
+      <tr>
+        <td>3</td>
+        <td><a class="text-info">Charlotte's Web</a></td>
+        <td>E.B. White</td>
+        <td>A pig named Wilbur and his friendship with a wise spider named Charlotte.</td>
+        <td class="text-success fw-bold">₹300</td>
+        <td>
+          <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#bookModal"
+                  data-title="Charlotte's Web" data-author="E.B. White" data-price="300"
+                  data-desc="A pig named Wilbur and his friendship with a wise spider named Charlotte."
+                  data-img="https://via.placeholder.com/150">
+            View More
+          </button>
+        </td>
+      </tr>
+
+      <!-- Book Row 4 -->
+      <tr>
+        <td>4</td>
+        <td><a class="text-info">Matilda</a></td>
+        <td>Roald Dahl</td>
+        <td>A brilliant young girl with telekinetic powers overcomes neglectful parents and a cruel headmistress.</td>
+        <td class="text-success fw-bold">₹320</td>
+        <td>
+          <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#bookModal"
+                  data-title="Matilda" data-author="Roald Dahl" data-price="320"
+                  data-desc="A brilliant young girl with telekinetic powers overcomes neglectful parents and a cruel headmistress."
+                  data-img="https://via.placeholder.com/150">
+            View More
+          </button>
+        </td>
+      </tr>
+
+      <!-- Book Row 5 -->
+      <tr>
+        <td>5</td>
+        <td><a class="text-info">Where the Wild Things Are</a></td>
+        <td>Maurice Sendak</td>
+        <td>A boy named Max travels to the land of Wild Things and becomes their king.</td>
+        <td class="text-success fw-bold">₹250</td>
+        <td>
+          <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#bookModal"
+                  data-title="Where the Wild Things Are" data-author="Maurice Sendak" data-price="250"
+                  data-desc="A boy named Max travels to the land of Wild Things and becomes their king."
+                  data-img="https://via.placeholder.com/150">
+            View More
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bookModalLabel">Book Details</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <!-- Book Image -->
+        <img id="modalImage" src="https://via.placeholder.com/150" alt="Book Image" class="img-fluid mb-3">
+
+        <h5 id="modalTitle"></h5>
+        <p><b>Author:</b> <span id="modalAuthor"></span></p>
+        <p id="modalDesc"></p>
+        <p><b>Price: ₹<span id="modalPrice"></span></b></p>
+
+        <!-- Actions -->
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-primary" id="addToCartBtn">Add to Cart</button>
+          <button class="btn btn-success" id="buyNowBtn">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cartCountElement = document.getElementById("cart-count");
+  const toastMessage = document.getElementById("toast-message");
+  const cartToastElement = document.getElementById("cartToast");
+  const cartToast = new bootstrap.Toast(cartToastElement);
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cartCountElement.textContent = cart.length;
+
+  const bookModal = document.getElementById("bookModal");
+  bookModal.addEventListener("show.bs.modal", (e) => {
+    const button = e.relatedTarget;
+    document.getElementById("modalTitle").textContent = button.dataset.title;
+    document.getElementById("modalAuthor").textContent = button.dataset.author;
+    document.getElementById("modalDesc").textContent = button.dataset.desc;
+    document.getElementById("modalPrice").textContent = button.dataset.price;
+    document.getElementById("modalImage").src = button.dataset.img;
+
+    // Add to Cart inside Modal
+    const addBtn = document.getElementById("addToCartBtn");
+    addBtn.onclick = () => {
+      cart.push({ title: button.dataset.title, price: parseInt(button.dataset.price) });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      cartCountElement.textContent = cart.length;
+      toastMessage.textContent = `✅ "${button.dataset.title}" added to cart!`;
+      cartToast.show();
+    };
+
+    // Buy Now inside Modal
+    const buyBtn = document.getElementById("buyNowBtn");
+    buyBtn.onclick = () => {
+      alert(`Redirecting to buy "${button.dataset.title}" for ₹${button.dataset.price}`);
+    };
+  });
+});
+</script>
+
+</body>
+</html>

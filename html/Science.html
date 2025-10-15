@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Science Books - Online BookStore</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="../Image/Logo/Books_Logo.png">
+</head>
+<body class="bg-dark text-white">
+
+<div class="container py-4">
+  <!-- Header with Cart Count -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary">Science Books</h2>
+     <div class="d-flex align-items-center me-3">
+        <a href="Cart.html" class="btn btn-warning">
+          Cart: <span id="cart-count">0</span>
+        </a>
+      </div>
+  </div>
+
+  <table class="table table-dark table-bordered table-hover align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>Sr No</th>
+        <th>Book Title</th>
+        <th>Author</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Book Row 1 -->
+      <tr>
+        <td>1</td>
+        <td><a>Fundamentals of Physics</a></td>
+        <td>David Halliday</td>
+        <td>A comprehensive guide to classical mechanics, electricity, magnetism, and modern physics.</td>
+        <td class="text-success fw-bold">₹499</td>
+        <td>
+          <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#bookModal"
+                  data-title="Fundamentals of Physics" data-author="David Halliday" data-price="499"
+                  data-desc="A comprehensive guide to classical mechanics, electricity, magnetism, and modern physics."
+                  data-img="../Image/Science/Funda.webp">
+            View More
+          </button>
+        </td>
+      </tr>
+
+      <!-- Book Row 2 -->
+      <tr>
+        <td>2</td>
+        <td><a>Organic Chemistry</a></td>
+        <td>John McMurry</td>
+        <td>Dive deep into molecular structures, reactions, and practical applications of organic compounds.</td>
+        <td class="text-success fw-bold">₹399</td>
+        <td>
+          <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#bookModal"
+                  data-title="Organic Chemistry" data-author="John McMurry" data-price="399"
+                  data-desc="Dive deep into molecular structures, reactions, and practical applications of organic compounds."
+                  data-img="../Image/Science/Organic.jpeg">
+            View More
+          </button>
+        </td>
+      </tr>
+      
+      <!-- Book Row 3 -->
+      <tr>
+        <td>3</td>
+        <td><a>Biology for Beginners</a></td>
+        <td>Peter Raven</td>
+        <td>An introduction to cells, genetics, human anatomy, and the living world around us.</td>
+        <td class="text-success fw-bold">₹299</td>
+        <td>
+          <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#bookModal"
+                  data-title="Biology for Beginners" data-author="Peter Raven" data-price="299"
+                  data-desc="An introduction to cells, genetics, human anatomy, and the living world around us."
+                  data-img="../Image/Science/biology.jpeg">
+            View More
+          </button>
+        </td>
+      </tr>
+      
+      <!-- Book Row 4 -->
+      <tr>
+        <td>4</td>
+        <td>
+          <a href="#" class="text-info" data-bs-toggle="modal" data-bs-target="#bookModal"
+             data-title="Journey Through Space" data-author="Neil deGrasse Tyson" data-price="459"
+             data-desc="Explore galaxies, planets, black holes, and the mysteries of the universe."
+             data-img="../Image/Science/Journey.jpeg">
+            Journey Through Space
+          </a>
+        </td>
+        <td>Neil deGrasse Tyson</td>
+        <td>Explore galaxies, planets, black holes, and the mysteries of the universe.</td>
+        <td class="text-success fw-bold">₹459</td>
+        <td>
+          <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#bookModal"
+                  data-title="Journey Through Space" data-author="Neil deGrasse Tyson" data-price="459"
+                  data-desc="Explore galaxies, planets, black holes, and the mysteries of the universe."
+                  data-img="../Image/Science/Journey.jpeg">
+            View More
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bookModalLabel">Book Details</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <!-- Book Image -->
+        <img id="modalImage" src="" alt="Book Image" class="img-fluid mb-3">
+        <h5 id="modalTitle"></h5>
+        <p><b>Author:</b> <span id="modalAuthor"></span></p>
+        <p id="modalDesc"></p>
+        <p><b>Price: ₹<span id="modalPrice"></span></b></p>
+
+        <!-- Actions -->
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-primary" id="addToCartBtn">Add to Cart</button>
+          <button class="btn btn-success" id="buyNowBtn">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cartCountElement = document.getElementById("cart-count");
+  const toastMessage = document.getElementById("toast-message");
+  const cartToastElement = document.getElementById("cartToast");
+  const cartToast = new bootstrap.Toast(cartToastElement);
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cartCountElement.textContent = cart.length;
+
+  const bookModal = document.getElementById("bookModal");
+  bookModal.addEventListener("show.bs.modal", (e) => {
+    const button = e.relatedTarget;
+    document.getElementById("modalTitle").textContent = button.dataset.title;
+    document.getElementById("modalAuthor").textContent = button.dataset.author;
+    document.getElementById("modalDesc").textContent = button.dataset.desc;
+    document.getElementById("modalPrice").textContent = button.dataset.price;
+    document.getElementById("modalImage").src = button.dataset.img;
+
+    // Add to Cart inside Modal
+    const addBtn = document.getElementById("addToCartBtn");
+    addBtn.onclick = () => {
+      cart.push({ title: button.dataset.title, price: parseInt(button.dataset.price) });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      cartCountElement.textContent = cart.length;
+      toastMessage.textContent = `✅ "${button.dataset.title}" added to cart!`;
+      cartToast.show();
+    };
+
+    // Buy Now inside Modal
+    const buyBtn = document.getElementById("buyNowBtn");
+    buyBtn.onclick = () => {
+      alert(`Redirecting to buy "${button.dataset.title}" for ₹${button.dataset.price}`);
+    };
+  });
+});
+</script>
+</body>
+</html>

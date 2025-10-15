@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Online BookStore</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-dark text-white">
+
+  <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card bg-secondary text-white shadow-lg p-4 rounded" style="width: 400px;">
+      <h2 class="text-center fw-bold mb-4">📚 Login</h2>
+
+      <!-- Login Form -->
+      <form id="loginForm">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control bg-dark text-white border-light" id="email" placeholder="Enter email" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control bg-dark text-white border-light" id="password" placeholder="Enter password" required>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Login</button>
+      </form>
+
+      <!-- Registration Link -->
+      <div class="mt-3 text-center">
+        <p>Don’t have an account? 
+          <a href="Register.html" class="text-warning fw-bold">Please Register</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!--Bootstrap Toast (Popup Message) -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="loginToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          Login Successful! Redirecting...
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (email === "smit@123.com" && password === "123456") {
+        //Show Bootstrap Toast
+        const toast = new bootstrap.Toast(document.getElementById("loginToast"));
+        toast.show();
+
+        //Redirect after 2 seconds
+        setTimeout(() => {
+          window.location.href = "../index.html";
+        }, 2000);
+      } else {
+        alert("Invalid email or password!");
+      }
+    });
+  </script>
+
+</body>
+</html>
